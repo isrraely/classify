@@ -70,7 +70,7 @@ Crie o arquivo .env na raiz do projeto e insira:
   
 ⚠️ Atenção: nunca suba este arquivo em repositórios públicos.  
 
-# 3. Rodar a Aplicação
+## 3. Rodar a Aplicação
 `python app.py  `
   
 O servidor estará acessível em: http://127.0.0.1:5000/
