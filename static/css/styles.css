@@ -1,0 +1,202 @@
+body,
+main {
+    margin: 0;
+    background: #0F172B;
+    background: linear-gradient(90deg, rgba(15, 23, 43, 1) 0%, rgba(29, 56, 133, 1) 100%);
+    color: #fff;
+    font-size: 1rem;
+}
+
+header.topo {
+    padding: 20px 0;
+}
+
+header.topo .logo {
+    max-width: 14rem;
+    margin-bottom: 20px;
+}
+
+header.topo p {
+    color: #cbd5e1;
+}
+
+.send-mail {
+    margin-bottom: 30px;
+}
+
+.form-box {
+    padding: 30px;
+    background: #334a6d61;
+    border: 1px solid #374771;
+    border-radius: 8px;
+}
+
+.form-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+.form-box header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-box header i {
+    font-size: 1.5rem;
+    color: #7790b7;
+}
+
+#email-form textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #374771;
+    border-radius: 4px;
+    background: #141e2e87;
+    color: #fff;
+    font-size: 1rem;
+    resize: none;
+}
+
+#email-form textarea::placeholder {
+    color: #f7f7f762;
+}
+
+#email-form .input-file {
+    background: transparent;
+    color: #fff;
+    border: 2px dashed #374771;
+    width: 100%;
+    padding: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    position: relative;
+    text-align: center;
+}
+
+#email-form .input-file.file-selected {
+    border: 2px dashed #5cb85c;
+    color: #3e8e41;
+}
+
+#email-form input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#email-form .input-file:hover {
+    background: #374771;
+    cursor: pointer;
+}
+
+#email-form .input-file i {
+    font-size: 20px;
+}
+
+#email-form .input-file p {
+    color: #fff;
+}
+
+#email-form .input-file.file-selected .text-input i,
+#email-form .input-file.file-selected .text-input p {
+    color: #3e8e41;
+}
+
+#email-form .input-file span {
+    font-size: 12px;
+    color: #cbd5e1;
+}
+
+#email-form button {
+    background: #415472;
+    width: 100%;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#email-form button i {
+    font-size: 0.9rem;
+}
+
+#email-form button:hover {
+    background: #2c3e5e;
+}
+
+#email-form .form-item {
+    margin-bottom: 20px;
+}
+
+#email-form.form-item p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+#email-form .form-item:last-child {
+    margin-bottom: 0;
+}
+
+textarea.content-display {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #374771;
+    border-radius: 4px;
+    background: #141e2e87;
+    color: #fff;
+    font-size: 1rem;
+    resize: none;
+}
+
+#suggested-category {
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 4px;
+    display: inline-block;
+    color: white;
+}
+
+.status-produtivo {
+    background-color: #28a745;
+}
+
+.status-improdutivo {
+    background-color: #dc3545;
+}
+
+footer {
+    padding: 20px 0;
+    text-align: center;
+    color: #d5dde6;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #959da5;
+}
+
+footer p span {
+    font-weight: 600;
+    color: #7694c5;
+}

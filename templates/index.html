@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static',
+    filename='images/favicon.png') }}"
+    />
+    <title>ClassiFy</title>
+  </head>
+
+  <body>
+    <main>
+      <header class="topo">
+        <div class="container text-center">
+          <img
+            src="{{ url_for('static', filename='images/logo-2.png') }}"
+            alt="Logo ClassiFy"
+            class="logo"
+          />
+          <h1>Classificador Inteligente de E-mails</h1>
+          <p>
+            Tecnologia de IA para categorização automática e sugestões de
+            resposta
+          </p>
+        </div>
+      </header>
+      <section class="send-mail">
+        <div class="container">
+          <div class="form-box">
+            <header>
+              <i class="fa-regular fa-file-lines"></i>
+              <h3>Inserir E-mail</h3>
+            </header>
+            <form
+              id="email-form"
+              action="/upload"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <div class="form-item">
+                <p>Conteúdo do E-mail</p>
+                <textarea
+                  name="mail_body"
+                  placeholder="Cole aqui o conteúdo do e-mail..."
+                ></textarea>
+              </div>
+              <div class="form-item">
+                <p>Ou faça upload de um arquivo</p>
+                <div class="input-file" id="input-file-area">
+                  <input
+                    type="file"
+                    name="file"
+                    id="fileInput"
+                    accept=".txt,.pdf,.docx"
+                  />
+                  <div class="text-input">
+                    <i
+                      id="file-icon"
+                      class="fa-solid fa-arrow-up-from-bracket"
+                    ></i>
+                    <p id="file-label">Clique ou arraste o arquivo</p>
+                    <span>Apenas arquivos .txt ou .pdf são aceitos</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-item">
+                <button type="submit" class="btn-submit">
+                  <i class="fa-regular fa-paper-plane"></i> Classificar E-mail
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="mail-classification">
+        <div class="container">
+          <div class="row-divider">
+            <div class="form-box result-box">
+              <header>
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <h3>Resultado da Análise</h3>
+              </header>
+              <div class="body-result">
+                <p>
+                  <strong>Categoria Sugerida:</strong>
+                  <span
+                    id="suggested-category"
+                    {%
+                    if
+                    resultado
+                    and
+                    resultado.categoria
+                    %}
+                    class="{% if resultado.categoria == 'Produtivo' %}status-produtivo{% else %}status-improdutivo{% endif %}"
+                    {%
+                    endif
+                    %}
+                  >
+                    {{ resultado.categoria if resultado and resultado.categoria
+                    else "Aguardando classificação..." }}
+                  </span>
+                </p>
+                {% if resultado and resultado.conteudo_enviado %}
+                <div class="sent-content-display">
+                  <p><strong>Conteúdo Original Analisado:</strong></p>
+                  <textarea readonly class="content-display">
+{{ resultado.conteudo_enviado }}
+                  </textarea>
+                </div>
+                <hr style="border-top: 1px solid #374771; margin: 20px 0" />
+                {% endif %}
+
+                <p>
+                  <strong>Resumo Executivo:</strong>
+                  <span id="summary-text">
+                    {{ resultado.resumo_executivo if resultado and
+                    resultado.resumo_executivo else "N/A" }}
+                  </span>
+                </p>
+                <p><strong>Resposta Sugerida:</strong></p>
+                <div class="suggested-reply" id="suggested-reply">
+                  <span id="suggested-reply-text">
+                    {{ resultado.resposta_sugerida if resultado and
+                    resultado.resposta_sugerida else "Aguardando
+                    classificação..." }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <span>Sistema de classificação inteligente de e-mails com IA</span>
+          <p>
+            Protótipo desenvolvido para desafio técnico por
+            <span>Isrraely Curtiz</span>
+          </p>
+        </div>
+      </footer>
+    </main>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const fileInput = document.getElementById("fileInput");
+        const fileLabel = document.getElementById("file-label");
+        const fileIcon = document.getElementById("file-icon");
+        const fileArea = document.getElementById("input-file-area");
+
+        const defaultText = "Clique ou arraste o arquivo";
+        const defaultIconClass = "fa-solid fa-arrow-up-from-bracket";
+
+        fileInput.addEventListener("change", function () {
+          if (fileInput.files.length > 0) {
+            const fileName = fileInput.files[0].name;
+            fileLabel.textContent = `1 arquivo selecionado: ${fileName}`;
+
+            fileArea.classList.add("file-selected");
+            fileIcon.className = "fa-solid fa-check-circle";
+          } else {
+            fileLabel.textContent = defaultText;
+
+            fileArea.classList.remove("file-selected");
+            fileIcon.className = defaultIconClass;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
