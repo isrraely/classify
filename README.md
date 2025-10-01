@@ -48,7 +48,7 @@ O projeto utiliza uma arquitetura **Full Stack leve e moderna**, focada em **efi
 
 ## ⚙️ Instruções de Execução
 
-## # Pré-requisitos
+### Pré-requisitos
 - Python **3.8+**
 - Conta no **Google AI Studio** (para chave Gemini API)
 
