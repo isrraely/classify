@@ -48,28 +48,28 @@ O projeto utiliza uma arquitetura **Full Stack leve e moderna**, focada em **efi
 
 ## ⚙️ Instruções de Execução
 
-### Pré-requisitos
+## # Pré-requisitos
 - Python **3.8+**
 - Conta no **Google AI Studio** (para chave Gemini API)
 
-### 1. Configurar o Ambiente
+## 1. Configurar o Ambiente
 
-# Navegue até a pasta raiz do projeto
+### Navegue até a pasta raiz do projeto
 python -m venv venv
 
-# Ativar ambiente virtual
+### Ativar ambiente virtual
 source venv/bin/activate   # macOS/Linux
 .\venv\Scripts\activate    # Windows
 
-# Instalar dependências
+### Instalar dependências
 pip install Flask google-genai python-dotenv PyPDF2
 
-### 2. Configurar a Chave da API 
+## 2. Configurar a Chave da API 
 Crie o arquivo .env na raiz do projeto e insira:
 GEMINI_API_KEY="SUA_CHAVE_AQUI"
 ⚠️ Atenção: nunca suba este arquivo em repositórios públicos.
 
-### 3. Rodar a Aplicação
+# 3. Rodar a Aplicação
 python app.py
 O servidor estará acessível em: http://127.0.0.1:5000/
 
