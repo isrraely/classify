@@ -84,4 +84,4 @@ O servidor estará acessível em: http://127.0.0.1:5000/
 | **Teste de Arquivo** | Upload de `.pdf` ou `.txt` com conteúdo produtivo       | Produtivo 🔴       |
 
 ## 👨‍💻 Por Isrraely Curtiz
-Desenvolvido como parte de um Desafio Técnico para automação de e-mails no setor financeiro.
+Desenvolvido como parte de um Desafio Técnico.
